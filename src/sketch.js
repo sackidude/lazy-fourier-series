@@ -1,7 +1,11 @@
 let time = 0;
 let wave = [];
+let slider;
+let oldSlide;
 
 function setup() {
+    slider = document.getElementById('amount-slider');
+    oldSlide = slider.value;
     canvas = createCanvas(600, 400);
 
     canvas.parent("sketch-holder");
@@ -13,15 +17,20 @@ function draw() {
     background(0);
     translate(200, 200);
 
+    if (oldSlide != slider.value) {
+        wave.splice(0, wave.length);
+        oldSlide = slider.value;
+    }
+
     let x = 0;
     let y = 0;
 
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < slider.value; i++) {
         let prevX = x;
         let prevY = y
   
         let n = i * 2 + 1;
-        let radius = 50 * (4 / (n * PI));
+        let radius = 75 * (4 / (n * PI));
         x += radius * cos(n * time);
         y += radius * sin(n * time);
         stroke(125);
@@ -31,7 +40,7 @@ function draw() {
         stroke(255)
         fill(255);
         line(prevX, prevY, x, y);
-        ellipse(x, y, 2);
+        ellipse(x, y, 1);
         
     }
     wave.unshift(y);
@@ -55,5 +64,5 @@ function draw() {
         wave.pop();
     }
 
-    time += 0.05;
+    time += 0.025;
 }
