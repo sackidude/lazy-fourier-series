@@ -44,7 +44,7 @@ function draw() {
         line(prevX, prevY, x, y);
         ellipse(x, y, 2);
     }
-    
+
     wave.unshift(y);
     strokeWeight(1.5);
     stroke(255, 0, 0)
