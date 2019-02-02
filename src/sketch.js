@@ -24,6 +24,8 @@ function draw() {
 
     let x = 0;
     let y = 0;
+    fill(255)
+    ellipse(0,0, 2)
 
     for (let i = 0; i < slider.value; i++) {
         let prevX = x;
@@ -40,9 +42,9 @@ function draw() {
         stroke(255)
         fill(255);
         line(prevX, prevY, x, y);
-        ellipse(x, y, 1);
-        
+        ellipse(x, y, 2);
     }
+    
     wave.unshift(y);
     strokeWeight(1.5);
     stroke(255, 0, 0)
@@ -64,5 +66,5 @@ function draw() {
         wave.pop();
     }
 
-    time += 0.025;
+    time += 0.030;
 }
